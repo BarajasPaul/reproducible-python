@@ -3,6 +3,16 @@ reproducible-python
 
 My reproducible workflow
 
+
+Keywords:
+--------------------
+wine, reviews, magazine, kaggle,
+Data collected from kaggle  winemag reviews
+
+URL:
+--------------------
+https://www.kaggle.com/resident
+
 Project Organization
 --------------------
 
