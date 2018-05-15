@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 """
-Module contaning the functions to visualize the 
+Module contaning the functions to visualize the
 wines distribution using a subset data
 """
 
 import sys
+import os
 import datetime
 
 import pandas as pd
@@ -18,7 +19,7 @@ def create_plots(filename):
     -----
     filename: str
         Path to the filename containing the wine data
-   
+
     """
     wine = pd.read_csv(filename)
 
@@ -52,7 +53,14 @@ def plot_distribution(wine):
 
     fname = f'figures/fig01_distribution-wine-scores.png'
 
-    fig.savefig(fname, bbox_inches = 'tight')
+    try:
+        #try to save the figure
+        fig.savefig(fname, bbox_inches = 'tight')
+    except OSError as e:
+        os.makedirs('figures')
+        print("Creating figures directory")
+        fig.savefig(fname, bbox_inches="tight")
+
     return (fname)
 
 
@@ -71,7 +79,7 @@ def plot_scatter(wine):
 
 
 if __name__ == '__main__':
-    # Filename is passed by the user 
+    # Filename is passed by the user
     filename = sys.argv[1]
-    
+
     create_plots(filename)
